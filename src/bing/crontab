@@ -1,0 +1,2 @@
+00 */1 * * * sh /Users/wuyi/workspace/bing-wallpaper/bing-wallpaper.sh
+01 */1 * * * /usr/bin/python  /Users/wuyi/scripts/set_desktop_picture_of_the_day.p
