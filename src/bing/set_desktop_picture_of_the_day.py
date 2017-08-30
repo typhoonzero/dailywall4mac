@@ -4,10 +4,11 @@ import time
 import subprocess
 import urllib, urllib2
 import re
+import operator
 
 def download_bing_today_wallpaper():
     wallpaper_dir = "%s/Pictures/bing-wallpapers"%os.getenv("HOME")
-    # g_img={url: "/az/hprichbg/rb/OregonPainted_ZH-CN8553728911_1920x1080.jpg"
+    # TAG:  g_img={url: "/az/hprichbg/rb/OregonPainted_ZH-CN8553728911_1920x1080.jpg"
     fd = urllib2.urlopen("http://cn.bing.com")
     content = fd.read()
     fd.close()
@@ -47,12 +48,15 @@ def main():
     
     wallpaper_dir = "%s/Pictures/bing-wallpapers"%os.getenv("HOME")
     to_set_picture = ""
+    file_list = []
     for f in os.listdir(wallpaper_dir):
         if f.endswith(".jpg"):
             full_file_path = '/'.join([wallpaper_dir, f])
             file_ctime = os.path.getctime(full_file_path)
-            if (time.time() - file_ctime) < 3600 * 24:
-                to_set_picture = full_file_path
+            file_list.append((full_file_path, file_ctime))
+    file_list.sort(key=operator.itemgetter(1))
+    if file_list:
+        to_set_picture=file_list[-1][0]
     if to_set_picture:
         set_desktop_background(to_set_picture)
 
