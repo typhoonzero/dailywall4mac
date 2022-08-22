@@ -1,7 +1,4 @@
 # dailywall4mac
-a little toy for automatic setting your desktop wallpaper from some favrate sites.
+Bing wall paper automatic update for your Mac.
 
-# TODO
-* add setup docs
-* tide up the codes
-* crawl nationalgeographic pictures
+
