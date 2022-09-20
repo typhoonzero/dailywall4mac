@@ -46,7 +46,6 @@ func downloadBingWallPaper(host, w, h, uhd, outputDir string) (string, error) {
 
 	outputFile := outputDir + "/" + imageFileName
 	if _, err := os.Stat(outputFile); err == nil {
-		fmt.Printf("skip downloading %s\n", outputFile)
 		return outputFile, nil
 	}
 
@@ -91,7 +90,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	defaultOutputDir := homedir + "/bing-wallpapers"
+	defaultOutputDir := homedir + "Pictures/bing-wallpapers"
 	host := os.Getenv("BING_WALLPAPER_HOST")
 	width := os.Getenv("BING_WALLPAPER_WIDTH")
 	height := os.Getenv("BING_WALLPAPER_HEIGHT")
